@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{semaineActuelle}}</mat-label>
+
+    <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Date de Départ" #start (dateChange)="onDateSelection(start.value)">
+        <input matEndDate placeholder="Date de Fin">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>

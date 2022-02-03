@@ -1,0 +1,64 @@
+<div class="container-nav">
+    <!-- Top Navigation Menu -->
+    <nav class="topnav">
+        <!-- Date et Logo de la nav bar -->
+        <div class="contain-nav">
+            <button (click)="navSide()" mat-icon-button mat-button class="example-icon burger-button" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+            <div class="contain-brand">
+                <img src="../assets/logo-lunchtime.png" alt="">
+                <h1>Stone LunchTime</h1>
+            </div>
+        </div>
+        <div id="myLinks">
+
+            <!-- Nav Bar pour les utilisateurs Non connecté -->
+            <ul *ngIf="!isConnect ">
+                <li (click)="navSide()" (click)="refresh()">
+                    <a routerLink="/homepage" routerLinkActive="active">Menu & Carte</a>
+                </li>
+                <li (click)="navSide()" (click)="refresh()">
+                    <a routerLink="bucket">Mon Panier </a>
+                </li>
+                <button (click)="onLog() " (click)="navSide()" (click)="refresh()" class="btn-co"><mat-icon>power_settings_new</mat-icon> Connexion</button>
+            </ul>
+
+            <!-- Nav Bar pour les utilisateurs Connecté -->
+            <ul *ngIf="isConnect && !isLunchLady">
+                <li (click)="navSide()" (click)="refresh()">
+                    <a routerLink="/homepage" routerLinkActive="active">Menu & Carte</a>
+                </li>
+                <li (click)="navSide()" (click)="refresh()">
+                    <a routerLink="myAccount">Mon Compte</a>
+                </li>
+                <li (click)="navSide()">
+                    <a routerLink="order/{{userId}}">Mes Commandes </a>
+                </li>
+                <li (click)="navSide()" (click)="refresh()">
+                    <a routerLink="bucket">Mon Panier </a>
+                </li>
+                <button (click)="onDeconnexion()" (click)="navSide()" (click)="refresh()" class="btn-co"><mat-icon>power_settings_new</mat-icon> Deconnexion</button>
+            </ul>
+
+            <!-- Nav Bar pour la LunchLady -->
+            <ul *ngIf="isConnect && isLunchLady">
+                <li (click)="navSide()">
+                    <a routerLink="/lunchHomepage" routerLinkActive="active">Menu & Carte</a>
+                </li>
+                <li (click)="navSide()">
+                    <a routerLink="myAccount" routerLinkActive="active">Mon Compte</a>
+                </li>
+                <li (click)="navSide()">
+                    <a routerLink="orderlist">Commandes</a>
+                </li>
+                <li (click)="navSide()">
+                    <a routerLink="users">Utilisateurs </a>
+                </li>
+                <button (click)="onDeconnexion()" (click)="navSide()" (click)="refresh()" class="btn-co"><mat-icon>power_settings_new</mat-icon> Deconnexion</button>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- End smartphone / tablet look -->
+</div>

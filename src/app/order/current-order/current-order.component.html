@@ -1,0 +1,27 @@
+<main class="contain-order">
+    <section class="contain-inprogress">
+        <h2>Commandes en cours</h2>
+        <ul *ngIf="thereIsOrders">
+            <!-- Boucle d'affichage des commande en cours pour l'utilisateur connecté -->
+            <li *ngFor="let order of orders">
+                <div class="contain-order-details">
+                    <p class="date"> {{order.creationDate}} à {{ order.creationTime }} </p>
+                    <p class="status">Statut : {{order.status}} </p>
+                </div>
+                <a routerLink="/orderDetails/{{order.id}}/{{userId}}">Voir Détails</a>
+                <!-- Redirection vers l'annulation et la modification de la commande en cours-->
+                <button *ngIf="order.status == 'En Attente' && order.creationDate > todayDate" (click)="deleteOrder(order.id)">Annuler ma commande</button>
+                <button *ngIf="order.status == 'En Attente' && order.creationDate > todayDate" (click)="modifyOrder(order.id)">Modifier ma commande</button>
+            </li>
+        </ul>
+        <!-- Message d'erreur si pas de commandes en cours -->
+        <div *ngIf="!thereIsOrders">
+            <p>Cet utilisateur n'a pas encore de commande a son actif :( </p>
+        </div>
+
+        <!-- Boutons de redirection -->
+        <button (click)="onReturnUsers()">Retour vers la lsite des utilisateurs</button>
+        <button (click)="onReturnUser()">Retour vers l'utilisateur</button>
+        <button (click)="onReturnMenu()">Retour vers Menu</button>
+    </section>
+</main>

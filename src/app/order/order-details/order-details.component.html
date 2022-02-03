@@ -1,0 +1,47 @@
+<div>
+    <div>
+        <!-- Information de la commande -->
+        <p>Date : {{ order.creationDate }}</p>
+        <p>Commandé à : {{ order.creationTime }}</p>
+        <p>status : {{order.status}}</p><br>
+        <p>Commande :</p>
+        <div>
+            <ul>
+                <!-- Affichage de la commande, boucle for each element de la commande -->
+                <li *ngFor="let orderPart of order.quantity">
+
+                    <ul *ngIf="orderPart.menu">
+                        <!-- Affichage des menus présents dans la commandes -->
+                        <h2>Les Menus</h2>
+                        <li *ngFor="let item of order.quantity"> 
+                            <p>{{item.menu.label}}</p>
+                            <div *ngFor="let meal of item.menu.meals">
+                                <p> {{meal.label}} </p>
+                            </div>
+                            <p>{{ orderPart.quantity }} x {{item.menu.priceDF | number: "1.2-2" }} unité </p>
+                            <p>Total de  {{ orderPart.quantity * item.menu.priceDF | number: "1.2-2" }} </p>
+                        </li>
+                    </ul>
+
+                    <br>
+                   
+                    <ul *ngIf="orderPart.meal">
+                    <!-- Affichage des meals présents dans la commandes -->
+                        <h2>A la Carte</h2>
+                        <li> 
+                            <p>{{orderPart.meal.label}}</p>
+                            <p>{{ orderPart.quantity }} x  {{ orderPart.meal.priceDF | number: "1.2-2" }} unité </p>
+                            <p>Total de {{ orderPart.quantity * orderPart.meal.priceDF | number: "1.2-2" }} </p>
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                </li> 
+            </ul>
+
+        </div>
+    </div>
+    <!-- Boutons de redirection divers -->
+   <button *ngIf="!isLunch" (click)="onReturnOders()">Mes Commandes -></button>
+   <button *ngIf="isLunch" (click)="onReturnCurrentOders()">Ses Commandes -></button>
+</div>

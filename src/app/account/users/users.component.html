@@ -1,0 +1,33 @@
+<section class="contain-users">
+    <h2>Utilisateurs</h2>
+    <div class="contain-table-users">
+        <div class="search-bar">
+            <app-search (search)="onSearch($event)"></app-search>
+        </div>
+        <br>
+        <br>
+        <!--Tableau des utilisateurs-->
+        <table>
+            <thead>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td class="hidden">Adresse</td>
+                <td class="hidden">Mail</td>
+                <td>Action</td>
+            </thead>
+            <tbody>
+                <!-- Affichage en boucle For de la liste des utilisateurs  -->
+                <tr *ngFor="let user of users | Userfilter: search; trackBy: trackByUserId">
+                    <td>{{user.name}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td class="hidden">{{user.address}}</td>
+                    <td class="hidden">{{user.email}}</td>
+                    <td><a routerLink="/user/{{user.id}}">Voir Détails</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="contain-button">
+        <button (click)="onReturnMenu()">Retour au Menu</button>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<main id="body">
+    <h1>Connexion</h1>
+    <div id="loginForm">
+
+        <!--Formulaire de Connexion-->
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <div id="inputs">
+                <!--Input du formulaire & Bouton Valider-->
+                <div class="input">
+
+                    <input type="text" [formControl]="email" placeholder="Email" />
+                </div>
+                <p *ngIf="email.dirty && (email.hasError('required') || email.hasError('email')) ">
+                    Email Invalide</p>
+
+                <div class="input">
+                    <input type="password" [formControl]="password" placeholder="Mot de Passe" />
+                </div>
+                <p *ngIf="password.dirty && password.hasError('required')">
+                    Mot de Passe Invalide</p>
+            </div>
+
+            <button [disabled]="
+          email.hasError('required') ||
+          email.hasError('email') ||
+          password.hasError('required')
+        ">
+        Se Connecter</button>
+            <p>{{ msgError }}</p>
+        </form>
+    </div>
+
+    <div id="boutonResetCreate">
+        <!--Redirection vers resetPassword et CreationAccount-->
+        <button (click)="onResetPassword()">Mot de Passe perdu ?</button><br />
+        <button (click)="onCreateNewAccount()">Créer un compte</button>
+    </div>
+
+</main>

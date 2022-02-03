@@ -1,0 +1,126 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.list-of-links,
+mat-menu,
+.mat-menu-panel {
+    background: #175242 !important;
+}
+
+mat-toolbar {
+    background-color: #175242;
+}
+
+.contain-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1em;
+}
+
+h1 {
+    color: #F1F1F1;
+}
+
+img {
+    width: 45px;
+    height: 45px;
+    padding: 1em;
+}
+
+.burger-button {
+    background-color: #175242;
+    border: none;
+    color: #F18F01;
+}
+
+.btn-co {
+    font-size: 1.2em;
+    color: #F1F1F1;
+}
+
+.btn-co mat-icon {
+    padding-right: 10px;
+}
+
+.contain-nav mat-icon {
+    font-size: 2.5em;
+}
+
+ul {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.btn-co {
+    border: none;
+    display: flex;
+    align-items: center;
+    padding-left: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0.7em;
+}
+
+
+/*TRYYYY*/
+
+.container-nav {
+    width: 100%;
+    margin: auto;
+    color: white;
+    border-radius: 10px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #175242;
+    position: relative;
+}
+
+.topnav #myLinks {
+    display: none;
+}
+
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    width: fit-content;
+}
+
+.topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.contain-brand {
+    display: flex;
+    width: 20%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+}
+
+.contain-order-timeNuser {
+    display: flex;
+    justify-content: space-between;
+    background-color: #175242;
+    border-radius: 6px;
+    padding: 1em;
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 0.8em;
+}
+
+.contain-details-order div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1em;
+}
+
+.contain-details-order p {
+    font-size: 1.1em;
+}
+
+h4 span {
+    color: #F18F18;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.priceDF {
+    color: #F18F18;
+    font-weight: bold;
+}
+
+.contain-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 50%;
+}
+
+
+/* Tooltip container */
+
+.contain-arrowmoney,
+.delete {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Tooltip text */
+
+.contain-arrowmoney .tooltiptext,
+.delete .tooltiptextdel {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(146, 144, 144);
+    color: rgb(32, 31, 31);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.contain-arrowmoney:hover .tooltiptext,
+.delete:hover .tooltiptextdel {
+    visibility: visible;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.4em;
+    margin: 10px;
+    height: 30px;
+}
+
+.valid {
+    background-color: #175242;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete {
+    background-color: rgb(255, 0, 85);
+    color: #fff;
+}
+
+.contain-arrowmoney {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

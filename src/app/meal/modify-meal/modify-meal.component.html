@@ -1,0 +1,58 @@
+<div>
+  
+  <h1>Ajouter un article dans la carte</h1>
+  <h2>Catégorie : {{ categoryName }}</h2>
+
+<!--Formulaire de Connexion-->
+<form (ngSubmit)="onModifyMeal()" [formGroup]="modifyMealForm">
+
+  <div id="inputs">
+      <!--Input du formulaire & Bouton Valider-->
+      <div class="input">
+          Nom de l'article : <input type="text" [formControl]="mealName" />    
+      </div>
+      <p *ngIf="mealName.dirty && (mealName.hasError('required')) ">
+        Nom Invalide</p>
+
+      <div class="input">
+        Prix : <input type="number" [formControl]="mealPrice" /> 
+      </div>
+      <p *ngIf="mealPrice.dirty && mealPrice.hasError('required')">
+        Prix Invalide</p>
+
+        <!-- Image de l'element -->
+        <input
+        type="file"
+        id="photoUser"
+        name="photoUser"
+        accept="image/png, image/jpeg" 
+        (change)="onModifyMealAvatar($event.target.files[0])"/>
+        <br />
+        <img src={{avatar}}/>
+
+      <ul >
+        <!-- Affichage des semaines de disponibilitées de l'element -->
+          <div *ngFor="let week of weeks">
+            <label for={{week.id}}>Semaine {{week.id}}</label>
+            <input *ngIf="week.checked; else unChecked" checked="checked" type="checkbox"  name={{week.id}} value={{week.id}}  (click)="onChangeCheckbox($event)" > 
+            <ng-template #unChecked>
+              <input type="checkbox"  name={{week.id}} value={{week.id}}  (click)="onChangeCheckbox($event)" >
+            </ng-template> 
+          </div>
+      </ul>
+
+      </div>
+  
+  <!-- Bouton de modification de l'element -->
+  <button [disabled]="mealName.hasError('required') || mealPrice.hasError('required')"> Modifier l'élement</button>
+  <!-- Message d'erreur -->
+  <p>{{ msgError }}</p>
+
+</form>
+
+<!-- Bouton de retour a la carte -->
+<div>
+  <button (click)="onReturn()">Retour à la carte</button>
+</div>
+
+</div>

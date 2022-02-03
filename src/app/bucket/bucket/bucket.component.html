@@ -1,0 +1,90 @@
+<main>
+    <h2>Mon panier</h2>
+    <section class="contain-bucket">
+        <div class="left">
+            <div class="contain-left">
+                <!--Date-->
+                <p>Date : {{ date }}</p>
+                <!-- Boucle For d'affichage du Panier -->
+                <div class="item-n-btn" *ngFor="let bucket of buckets">
+                    <div class="item">
+                        <p>
+                            <span class="category-item">{{ bucket[0].name }}</span> <br /> {{ bucket[1].label }} <br />
+                            <span class="price-item">
+                Prix: {{ bucket[1].priceDF | number: "1.2-2" }} crédits / unité
+              </span>
+                        </p>
+                    </div>
+
+                    <div class="btn-item-st">
+                        <div class="btn-item">
+                            <button (click)="onUpQuantite(bucket)">+</button>
+                            <p>{{ bucket[0].quantite }}</p>
+                            <button (click)="onDownQuantite(bucket)">-</button>
+                            <button (click)="onDeletePartOrder(bucket)">x</button>
+                        </div>
+
+                        <div class="sous-total">
+                            <p>
+                                Sous-total: {{ bucket[0].quantite * bucket[1].priceDF | number: "1.2-2" }} crédits
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Calcul des Crédits restants et utilisés avec 2 nombres de flottant apres la virgule-->
+        <div class="right">
+            <div class="top" [ngClass]="{ auth: isAuth }">
+
+                <!-- Crédit restant -->
+                <div *ngIf="isAuth">
+                    <p>Crédits restant :</p>
+                    <p class="nb-credit">{{ wallet | number: "1.2-2" }}</p>
+                </div>
+
+                <!-- Crédits utilisés -->
+                <div>
+                    <p>Crédits utilisés :</p>
+                    <p class="nb-credit">{{ price | number: "1.2-2" }}</p>
+                </div>
+
+            </div>
+            <div class="contain-btn-smart">
+
+                <div class="bottom" *ngIf="isAuth">
+                    <!-- Bouton de validation de Commande -->
+                    <button [disabled]="!userCanPay || bucketIsEmpty || tooLate" class="btn valid valid-bucket" (click)="onValideBucket()">
+                      Valider ma commande
+                      <span class="tooltiptext">
+                      <i class="fas fa-exclamation-circle"></i>
+                      ATTENTION
+                      <i class="fas fa-exclamation-circle"></i> <br>
+                      Toute commande dois etre prise <br> avant {{ timeLimit }}
+                    </span>
+                    </button>
+                    <!-- Message d'erreur si les crédits sont vides -->
+                    <p *ngIf="!userCanPay && !bucketIsEmpty">
+                        Vous n'avez pas assez de crédits, vider un peu votre panier ou remplissez votre compte auprès de Mme Sandy Wich
+                    </p>
+                    <!-- Message d'erreur si le panier est vide -->
+                    <p *ngIf="bucketIsEmpty">Votre Panier est vide ! Banane x)</p>
+                </div>
+                <div class="bottom">
+                    <!-- Bouton de connexion ou d'acces au panier selon la connexion de l'utilisateur -->
+                    <button class="btn valid" *ngIf="!isAuth" (click)="onLogin()">
+                    Me Connecter pour voir mon Panier
+                    </button>
+                    <button *ngIf="!bucketIsEmpty" class="btn delete" (click)="onDeleteBucket()">
+                    Vider mon Panier
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <button class="btn return" (click)="onGoToMenu()">Retour au Menu</button>
+</main>

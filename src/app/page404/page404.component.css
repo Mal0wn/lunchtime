@@ -1,0 +1,79 @@
+.contain404 {
+    margin: auto;
+    width: 70%;
+}
+
+.sect-404 {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+h2,
+p {
+    text-align: center;
+}
+
+h2 {
+    font-size: 3em;
+    color: #175242;
+}
+
+img {
+    width: 40%;
+    height: auto;
+    margin-bottom: 2.2em;
+}
+
+button {
+    background-color: #175242;
+    color: #F18F01;
+    border: none;
+    padding: 1em;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #F18F01;
+    color: #175242;
+    cursor: grab;
+}
+
+
+/*ForTab*/
+
+@media screen and (min-width: 760px) and (max-width: 1024px) {
+    h2 {
+        font-size: 6em;
+        padding: 1em;
+    }
+    p {
+        font-size: 2em;
+    }
+    img {
+        width: 65%;
+    }
+    button {
+        font-size: 2em;
+    }
+}
+
+
+/*ForSmartphone*/
+
+@media screen and (min-width: 320px) and (max-width: 990px) {
+    .sect-404 {
+        padding-top: 4em;
+    }
+    img {
+        width: 100%;
+    }
+    h2 {
+        width: 100%;
+    }
+}

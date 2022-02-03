@@ -1,0 +1,154 @@
+<section class="contain-changeinfo" id="body">
+    <h2>Mes informations - Changements</h2>
+    
+    <!--Changement de la photo de l'utilisateur et apercue de la photo de l'utilisateur-->
+    <div>  
+        <label for="photoUssser">Changer ma Photo :</label>
+        <input
+            type="file"
+            id="photoUssser"
+            name="photoUssser"
+            accept="image/png, image/jpeg" 
+            (change)="onModifyAvatar($event.target.files[0])"
+            />
+        <img src={{avatar}} alt="avatar"/>
+    </div>
+
+    <!--Formulaire contenant les informations de l'utilisateur et Gestion des erreurs de validators-->
+    <div id="createForm">
+        <form (ngSubmit)="changeInformationsAccount()" [formGroup]="changeInformationsForm"> 
+            <!--Champ-->
+            <div class="label-form">
+                Nom :<input type="text" [formControl]="name" />
+            </div><br/>
+            <p *ngIf="name.dirty && (name.hasError('required') || name.hasError('pattern'))">
+                Nom incorrect (caracteres alpha-numérique uniquement, accents non autorisés)
+            </p>
+            <!--Champ-->
+            <div class="label-form">
+                Prénom : <input type="text" [formControl]="firstname" />
+            </div><br/>
+            <!--Validators-->
+            <p *ngIf="firstname.dirty && (firstname.hasError('required') || firstname.hasError('pattern'))">
+                Prénom incorrect (caractères alpha-numérique uniquement, accents non autorisés)
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Numéro de téléphone :
+                <input type="tel" maxlength="10" [formControl]="phone" />
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="phone.dirty && (phone.hasError('required') || phone.hasError('pattern') || phone.hasError('minlength')) ">
+                Téléphone incorrect (10 caractères numériques nécesaires)
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Email : <input type="text" [formControl]="email" />
+            </div><br />
+            <!--Validators-->
+            <p *ngIf="email.dirty && (email.hasError('required') || email.hasError('email'))">
+                Email incorrect
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Code Postale :
+                <input type="text" maxlength="5" [formControl]="postalCode" />
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="postalCode.dirty && (postalCode.hasError('required') || postalCode.hasError('minlength') || postalCode.hasError('pattern')) ">
+                Code Postal incorrect (5 caractères numériques nécessaires)
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Ville : <input type="text" [formControl]="town" />
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="town.dirty && town.hasError('required')">
+                Ville requise
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Adresse Postale : <textarea type="text" [formControl]="adress"></textarea>
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="adress.dirty && adress.hasError('required')">
+                Adresse requise
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                <label for="sex">Genre</label>
+                <select name="sex" [formControl]="sex">
+                    <option [value]="0">Masculin</option>
+                    <option [value]="1">Féminin</option>
+                    <option [value]="2">Autre</option>
+                </select>
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="sex.dirty && sex.hasError('required')">Genre requis</p>
+           
+            <p class="warning">Si vous ne souhaitez pas changer de mot de passe, veuillez ne rien inscrire</p>
+            <!--Champ-->
+            <div class="label-form">
+                Mot de Passe : <input type="password" [formControl]="password" />
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf=" password.dirty && (password.hasError('minlength') || password.hasError('required'))">
+                Mot de Passe incorrect (8 caractères minimum)
+            </p>
+
+            <!--Champ-->
+            <div class="label-form">
+                Vérification du Mot de Passe
+                <input type="password" [formControl]="passwordVerif" />
+            </div>
+            <br />
+            <!--Validators-->
+            <p *ngIf="passwordVerif.dirty && (passwordVerif.hasError('required') || password.hasError('minlength') || passwordVerif.value != password.value) ">
+                Mots de Passes incorrects (Vos mots de pas ne sont pas identiques)
+            </p>
+            <br>
+
+            <button class="btn modif" [disabled]="
+            email.hasError('required') ||
+            email.hasError('email') ||
+            firstname.hasError('required') ||
+            firstname.hasError('pattern') ||
+            name.hasError('required') ||
+            name.hasError('pattern') ||
+            phone.hasError('required') ||
+            phone.hasError('pattern') ||
+            phone.hasError('minlength') ||
+            postalCode.hasError('required') ||
+            postalCode.hasError('minlength') ||
+            postalCode.hasError('pattern') ||
+            town.hasError('required') ||
+            adress.hasError('required') ||
+            password.hasError('minlength') ||
+            password.hasError('minlength') ||
+            passwordVerif.value != password.value ||
+            sex.hasError('required')
+          ">Modifier mes informations
+        </button>
+        </form>
+    </div>
+
+    <p>{{ msgError }}</p>
+
+
+    <div id="boutonReturn">
+        <!--Bouton de retour vers le login-->
+        <button class="btn" (click)="onReturn()">Retour</button>
+    </div>
+</section>

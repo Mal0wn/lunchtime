@@ -1,0 +1,83 @@
+.container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.filters {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+select {
+    font-size: 1.2em;
+    border-radius: 6px;
+    background-color: #175242;
+    border: #175242;
+    color: orange;
+    font-weight: bold;
+    padding: 0.4em;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    height: 600px;
+    margin-top: 1em;
+}
+
+.week-container {
+    color: #175242;
+    font-size: 2em;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.day {
+    padding: 1em;
+    box-shadow: 12.5px 12.5px 24.5px rgba(0, 0, 0, 0.035), 100px 100px 196px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+}
+
+.day:hover {
+    cursor: pointer;
+    color: #f18f01;
+    box-shadow: 6.7px 6.7px 9px rgba(0, 0, 0, 0.028), 22.3px 22.3px 30.2px rgba(0, 0, 0, 0.042), 100px 100px 135px rgba(0, 0, 0, 0.07);
+}
+
+.users {
+    min-width: 500px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1000px) {
+    .container {
+        width: 90%;
+    }
+    .filters {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 740px) {
+    .filters {
+        flex-direction: column;
+        height: 200px;
+    }
+    .main {
+        flex-direction: column;
+    }
+    .week-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .day {
+        font-size: 0.8em;
+    }
+    .users {
+        min-width: 200px;
+    }
+}

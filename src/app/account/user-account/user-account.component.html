@@ -1,0 +1,53 @@
+<section class="contain-account">
+    <!-- Informations du Compte de l'utilisateur-->
+    <h2>Mon Compte</h2>
+    <div class="desk-left mob-top">
+        <article class="contain-info">
+            <div class="contain-avatar">
+                <img src={{avatar}} alt="avatar">
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Nom : </p>
+                <p class="contain-linespan"> <span> {{ name }}</span></p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Prénom : </p>
+                <p class="contain-linespan"> <span> {{ firstname }}</span></p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Sexe: </p>
+                <p class="contain-linespan"> <span> {{ sexe }} </span> </p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Email:</p>
+                <p class="contain-linespan"> <span> {{ email }} </span> </p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Téléphone: </p>
+                <p class="contain-linespan"> <span> {{ phone }} </span> </p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Adresse: </p>
+                <p class="contain-linespan"> <span> {{ adress }} </span> </p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Code Postal: </p>
+                <p class="contain-linespan"> <span> {{ postalCode }} </span> </p>
+            </div>
+            <div class="contain-line">
+                <p class="contain-linep">Ville: </p>
+                <p class="contain-linespan"> <span> {{ town }} </span> </p>
+            </div>
+        </article>
+        <div class="contain-nbcred">
+            <p>Crédit :</p>
+            <p><span>{{ credit | number: "1.2-2" }}</span></p>
+        </div>
+    </div>
+    <div class="contain-btn">
+        <button (click)="onModifInformations()">Modifier mes informations / Mot de Passe</button>
+        <!--Si ce n'est pas la lunch, le compte peut etre soldé-->
+        <button *ngIf="!isLunch" (click)="onSoldMyAccount()">Solder mon Compte</button>
+        <button (click)="onReturnMenu()">Retour au Menu</button>
+    </div>
+</section>

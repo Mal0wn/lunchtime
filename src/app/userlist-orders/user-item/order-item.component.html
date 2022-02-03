@@ -1,0 +1,27 @@
+<section class="container" *ngIf="orderInput !== undefined">
+    <div class="contain-order-timeNuser">
+        <h3> Commandée le : {{ orderInput.creationDate}} <br> à {{orderInput.creationTime}}</h3>
+        <h4>Par : <span>{{ orderInput.user.name }} {{ orderInput.user.firstname }}</span></h4>
+    </div>
+    <div class="contain-details-order">
+        <p>Détails :</p>
+        <div *ngFor="let item of orderInput.quantity">
+            <p class="label">
+                {{item.meal.label}}
+            </p>
+            <p class="priceDF">{{item.meal.priceDF}}</p>
+        </div>
+    </div>
+    <div class="contain-btn" *ngIf="orderInput.status == 0">
+
+        <button class="btn valid" (click)="deliverAndPayOrder()">
+        Donner la commande et créditer le compte
+      </button>
+        <button class="btn delete" (click)="deleteOrder()">
+        <span class="tooltiptextdel">Supprimer la commande</span>
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+
+</section>
+<hr>

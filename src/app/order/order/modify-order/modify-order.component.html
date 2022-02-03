@@ -1,0 +1,16 @@
+<div class="container">
+    <div *ngFor="let meal of item.quantity">
+        <p>{{ meal.meal.label }}</p>
+        <div>
+            <button (click)="add(meal)">+</button>
+            <p>{{ meal.quantity }}</p>
+            <ng-container *ngIf="meal.quantity > 1">
+                <button (click)="remove(meal)">-</button>
+            </ng-container>
+            <button (click)="removeMeal(meal)">supprimer le repas</button>
+        </div>
+    </div>
+    <button (click)="emitValue(1);">Valider la modification</button>
+    <button (click)="emitValue(0);">Annuler la modification</button>
+    <button (click)="emitValue(-1);">supprimer la commande</button>
+</div>

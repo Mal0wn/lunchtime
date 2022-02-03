@@ -1,0 +1,111 @@
+.contain-changeinfo {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    padding: 3em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #175242;
+    margin-bottom: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+}
+
+.label-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+input,
+select,
+textarea {
+    width: 60%;
+    border-color: #175242;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+p {
+    color: red;
+}
+
+.warning {
+    color: #175242;
+}
+
+.choosefile {
+    border: none;
+    background-color: #175242;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid rgba(204, 204, 204, 0);
+    background-color: #175242;
+    color: white;
+    width: 100%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.custombtn {
+    text-align: center;
+    margin: auto;
+}
+
+.btn {
+    border: 1px solid rgba(204, 204, 204, 0);
+    background-color: #175242;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.modif {
+    width: 40%;
+    margin: auto;
+    background-color: #F18F01;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1020px) {
+    form {
+        width: 100%;
+    }
+    .contain-changeinfo {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 590px) {
+    .label-form {
+        display: flex;
+        flex-direction: column;
+    }
+    form {
+        text-align: center;
+    }
+    .label-form input,
+    textarea,
+    select {
+        width: 100%;
+        height: 30px;
+    }
+}

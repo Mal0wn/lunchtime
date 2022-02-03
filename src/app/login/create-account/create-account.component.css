@@ -1,0 +1,81 @@
+h1 {
+    color: #175242;
+    text-align: center;
+    font-size: 4vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin: 2vh;
+}
+
+#body {}
+
+#createForm {
+    background-color: #86CB92;
+    border-radius: 6px;
+    width: 40vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+    color: #175242;
+    font-size: 1em;
+    margin: auto;
+}
+
+input {
+    border: #86CB92;
+    margin: 1vh;
+}
+
+form button {
+    margin: 1vh;
+    font-size: 2.5vh;
+    color: #F18F01;
+    background-color: #175242;
+    border: #175242;
+    border-radius: 3px;
+    margin-top: 3vh;
+    padding: 0.5vw;
+}
+
+#boutonReturn {
+    margin-top: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+#boutonReturn button {
+    border: #f3f3f3;
+    background-color: #f3f3f3;
+    color: #175242;
+    font-size: 2vh;
+}
+
+p {
+    color: red;
+    font-size: 1.5vh;
+}
+
+.gender {
+    margin-bottom: 1em;
+}
+
+.ph-user {
+    margin-top: 0.7em;
+}
+
+form button:disabled {
+    background-color: #7a827d;
+}
+
+.img-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 800px) {
+    #createForm {
+        width: 80%;
+    }
+}

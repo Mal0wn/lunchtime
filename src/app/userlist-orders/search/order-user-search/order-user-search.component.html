@@ -1,0 +1,5 @@
+<div class="container">
+    <i class="fas fa-search"></i>
+    <input placeholder="Chercher un nom" type="text" (input)="sendCriteria()" [(ngModel)]="criteria">
+    <button (click)="clearCriteria()">Supprimer</button>
+</div>

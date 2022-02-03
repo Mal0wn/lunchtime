@@ -1,0 +1,20 @@
+input {
+    border-bottom: #175242 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-right: 1em;
+}
+
+.fa-search {
+    color: #175242;
+}
+
+button {
+    background-color: #175242;
+    color: #F18F18;
+    padding: 0.4em;
+    border-radius: 6px;
+    border: none;
+    font-size: 1.3em;
+}

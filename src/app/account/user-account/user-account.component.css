@@ -1,0 +1,150 @@
+.contain-account {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    padding: 3em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #175242;
+    margin-bottom: 2em;
+}
+
+.desk-left {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+    align-items: baseline;
+    background-color: #86CB92;
+    border-radius: 6px;
+    padding: 2em;
+}
+
+.contain-avatar img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.contain-avatar {
+    border: #175242 5px solid;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.contain-info {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 2em;
+    margin: 2em;
+}
+
+.contain-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contain-line p {
+    width: 100%;
+    text-align: left;
+}
+
+.contain-linep {
+    color: #175242;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 0.2em;
+}
+
+.contain-line p span {
+    text-align: justify;
+    width: 100%;
+}
+
+.contain-nbcred {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #175242;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain-nbcred p {
+    text-align: center;
+    font-size: 1.5em;
+    color: #F1F1F1;
+    font-weight: bold;
+}
+
+.contain-nbcred p span {
+    color: #F18F01;
+}
+
+.contain-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contain-btn button {
+    border: 1px solid rgba(204, 204, 204, 0);
+    background-color: #175242;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1020px) {
+    .contain-account {
+        margin-top: 0;
+        padding: 1em;
+    }
+    .desk-left {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .contain-info {
+        align-items: center;
+        width: 100%;
+        padding-top: 0.2em;
+    }
+    .contain-nbcred {
+        width: 100px;
+        height: 100px;
+    }
+    .contain-nbcred p {
+        font-size: 1.1em;
+        padding: 0;
+        margin: 0;
+    }
+    .contain-line {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .contain-linespan {
+        text-align: left;
+    }
+    .contain-btn {
+        flex-direction: column;
+    }
+    .contain-btn button {
+        margin-bottom: 1em;
+    }
+}

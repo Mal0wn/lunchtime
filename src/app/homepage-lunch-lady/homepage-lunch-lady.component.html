@@ -1,0 +1,133 @@
+<main class="contain-homepage">
+    <section class="sect-homepage">
+        <H2>Menu et Carte</H2>
+        <!--Affichage du Menu-->
+        <div>
+            <form>
+                <span>Changer l'heure max de fin des commandes</span>
+                <input type="time" id="appt" name="appt"
+                min="09:00" max="18:00" required [formControl]="maxOrderHour">
+                <button (click)="onChangeConstraint()" class="btn add">Valider</button>
+            </form>
+        </div>
+        <div class="contain-plats">
+            <h3 class="title-carte">Menu</h3>
+            <p>Choisissez <span>2 plats</span> pour chaque jour</p>
+
+            <!-- Formulaire de choix des deux plats du jour pour les jours de la semaine -->
+            <form (ngSubmit)="selectMealsOfWeek()" [formGroup]="MenuForm">
+                <ul class="contain-day">
+
+                    <!-- Select des deux plats du jour pour le lundi -->
+                    <li formGroupName="lundi">
+                        <h4 class="day-name">{{this.days[0].name}}</h4>
+                        <select formControlName="mySelectMenu1">
+                            <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                                {{plat.label}}
+                            </option>
+                        </select>
+                        <select formControlName="mySelectMenu2">
+                        <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                            {{plat.label}}
+                        </option>
+                        </select>
+                    </li>
+
+                    <!-- Select des deux plats du jour pour le mardi -->
+                    <li formGroupName="mardi">
+                        <h4 class="day-name">{{this.days[1].name}}</h4>
+                        <select formControlName="mySelectMenu1">
+                          <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                              {{plat.label}}
+                          </option>
+                      </select>
+                        <select formControlName="mySelectMenu2">
+                      <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                          {{plat.label}}
+                      </option>
+                      </select>
+                    </li>
+
+
+                    <!-- Select des deux plats du jour pour le Mercredi -->
+                    <li formGroupName="mercredi">
+                        <h4 class="day-name">{{this.days[2].name}}</h4>
+                        <select formControlName="mySelectMenu1">
+                          <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                              {{plat.label}}
+                          </option>
+                      </select>
+                        <select formControlName="mySelectMenu2">
+                      <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                          {{plat.label}}
+                      </option>
+                      </select>
+                    </li>
+
+                    <!-- Select des deux plats du jour pour le Jeudi -->
+                    <li formGroupName="jeudi">
+                        <h4 class="day-name">{{this.days[3].name}}</h4>
+                        <select formControlName="mySelectMenu1">
+                          <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                              {{plat.label}}
+                          </option>
+                      </select>
+                        <select formControlName="mySelectMenu2">
+                      <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                          {{plat.label}}
+                      </option>
+                      </select>
+                    </li>
+
+                    <!-- Select des deux plats du jour pour le Vendredi -->
+                    <li formGroupName="vendredi">
+                        <h4 class="day-name">{{this.days[4].name}}</h4>
+                        <select formControlName="mySelectMenu1">
+                          <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                              {{plat.label}}
+                          </option>
+                      </select>
+                        <select formControlName="mySelectMenu2">
+                      <option  *ngFor="let plat of this.plats" [value]="plat.id">
+                          {{plat.label}}
+                      </option>
+                      </select>
+                    </li>
+
+                </ul>
+
+                <!-- Bouton de validation des plats du jour -->
+                <div class="contain-btn">
+                    <button type="submit" class="btn add"> Valider</button>
+                    <button class="btn delete" (click)="deleteMealofWeek()">Supprimer les plats de la semaine</button>
+                </div>
+
+            </form>
+
+        </div>
+        <!--Carte-->
+        <div class=" contain-carte">
+            <h3 class="title-carte">La carte</h3>
+            <section class="category-carte">
+                <ul>
+                    <!-- Boucle pour toutes les catégories -->
+                    <li *ngFor="let category of categories">
+                        <h4 class="contain-cat">{{category[0].name}}</h4>
+                        <ul class="list-of-meals">
+                            <!-- Affichage des element de la categorie en cours -->
+                            <li class="meal-item" *ngFor="let item of category[0]['items']">
+                                <h5 class="meal-title">{{item.label}}</h5>
+                                <p class="meal-price">{{ item.priceDF }} crédit(s)</p>
+                                <div class="contain-btn-meal">
+                                    <button class="btn modify" (click)="onModifyItem(item)">Modifier</button>
+                                    <button class="btn delete" (click)="onDeleteMeal(item)">Supprimer</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn add" (click)="onAddNewItem(category)">Ajouter un nouvel article</button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+</main>

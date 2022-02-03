@@ -1,0 +1,120 @@
+<div id="body">
+    <h1>Créer mon Compte</h1>
+
+    <div id="createForm">
+        <p>Tout les champs sont obligatoires</p>
+        <!--Formualire de création de Compte-->
+        <form (ngSubmit)="createAccount()" [formGroup]="createAccountForm">
+            <!--Input du formulaire & Bouton Valider et gestion des erreurs de validators-->
+
+            <input type="text" placeholder="Nom" [formControl]="name" /><br/>
+            <p *ngIf="name.dirty && (name.hasError('required') || name.hasError('pattern'))">
+                Nom incorrect (caracteres alpha-numériques uniquement, accents non autorisés)
+            </p>
+
+            <input type="text" placeholder="Prénom" [formControl]="firstname" /><br/>
+            <p *ngIf="firstname.dirty && (firstname.hasError('required') || firstname.hasError('pattern'))">
+                Prénom incorrect (caracteres alpha-numériques uniquement, accents non autorisés)
+            </p>
+
+
+            <input type="tel" maxlength="10" placeholder="Téléphone" [formControl]="phone" /><br />
+            <p *ngIf="phone.dirty && (phone.hasError('required') || phone.hasError('pattern') || phone.hasError('minlength')) ">
+                Téléphone incorrect (10 caractères numériques nécessaires)
+            </p>
+
+            <input type="text" placeholder="Email" [formControl]="email" /><br />
+            <p *ngIf="email.dirty && (email.hasError('required') || email.hasError('email'))">
+                Email incorrecte
+            </p>
+
+
+            <input type="text" maxlength="5" placeholder="Code Postal" [formControl]="postalCode" /><br />
+            <p *ngIf="postalCode.dirty && (postalCode.hasError('required') || postalCode.hasError('minlength') || postalCode.hasError('pattern')) ">
+                Code Postal incorrect (5 caractères numériques nécessaires)
+            </p>
+
+            <input type="text" placeholder="Ville" [formControl]="town" /><br />
+            <p *ngIf="town.dirty && town.hasError('required')">
+                Ville requise
+            </p>
+
+            <input type="text" placeholder="Adresse" [formControl]="adress" /><br />
+            <p *ngIf="adress.dirty && adress.hasError('required')">
+                Adresse requise
+            </p>
+
+            <input type="password" placeholder="Mot de passe" [formControl]="password" /><br />
+            <p *ngIf=" password.dirty && (password.hasError('minlength') || password.hasError('required'))">
+                Mot de Passe incorrect (8 caractères minimum)
+            </p>
+
+
+            <input type="password" placeholder="Verification Mot de Passe" [formControl]="passwordVerif" /><br />
+            <p *ngIf="passwordVerif.dirty && (passwordVerif.hasError('required') || password.hasError('minlength') || passwordVerif.value != password.value) ">
+                Mots de Passes incorrects (Vos mots de passe ne sont pas identiques)
+            </p>
+
+
+            <select name="sex" [formControl]="sex" class="gender">
+              <option value="">Genre</option>
+        <option [value]="0">Masculin</option>
+        <option [value]="1">Féminin</option>
+        <option [value]="2">Non Binaire</option></select
+      ><br />
+      <p *ngIf="sex.dirty && sex.hasError('required')" >Genre requis</p>
+
+      <label for="photoUser" class="ph-user">
+        Choisir un avatar:
+      </label> <br>
+      <input
+        type="file"
+        id="photoUser"
+        name="photoUser"
+        accept="image/png, image/jpeg"
+        [formControl]="image"
+        (change)="onModifyAvatar($event.target.files[0])"
+        />
+<div id="containAvatar" *ngIf="avatar">
+  <img class="img-avatar" src={{avatar}}/>
+</div>
+<br>
+
+
+      <button
+        [disabled]="
+          email.hasError('required') ||
+          email.hasError('email') ||
+          firstname.hasError('required') ||
+          firstname.hasError('pattern') ||
+          name.hasError('required') ||
+          name.hasError('pattern') ||
+          phone.hasError('required') ||
+          phone.hasError('pattern') ||
+          phone.hasError('minlength') ||
+          postalCode.hasError('required') ||
+          postalCode.hasError('minlength') ||
+          postalCode.hasError('pattern') ||
+          town.hasError('required') ||
+          adress.hasError('required') ||
+          password.hasError('minlength') ||
+          password.hasError('required') ||
+          passwordVerif.hasError('required') ||
+          password.hasError('minlength') ||
+          passwordVerif.value != password.value ||
+          sex.hasError('required') ||
+          image.hasError('required')
+        ">Créer mon Compte
+      </button>
+    </form>
+  </div>
+
+  <p>{{ msgError }}</p>
+
+
+
+  <div id="boutonReturn">
+    <!--Bouton de retour vers le login-->
+    <button (click)="onReturn()">Retour</button>
+  </div>
+</div>

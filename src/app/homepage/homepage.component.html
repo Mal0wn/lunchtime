@@ -1,0 +1,119 @@
+<main class="contain-homepage">
+
+    <div class="sect-header">
+        <h1>Order <br><br> <span>& Eat</span></h1>
+    </div>
+
+    <section class="sect-homepage">
+        <h2 class="fadein">Menu et Carte</h2>
+
+        <!-- Affichage des plats du jour -->
+        <div class="contain-all-food">
+            <div class="contain-plats">
+                <h3 class="title-carte">Menu</h3>
+
+                <br>
+                <!-- Message d'erreur au cas ou il n'y a pas de plats du jour -->
+                <div class="div-err" *ngIf="this.days[0].plats.length == 0">
+                    <h3 class="err-msg"> Il n'y a pas de Menu pour la semaine <i class="fas fa-sad-cry"></i>
+                        <br><br> Reviens plus tard ou pioche dans la carte !<i class="fas fa-pizza-slice"></i> </h3>
+                </div>
+
+                <!-- Affichage en boucle for les jours de la semaine -->
+                <div class="list-of-menus">
+                    <article class="contain-menu-day" *ngFor="let day of days">
+
+                        <h4 class="day-name" *ngIf="day.plats.length >0">
+                            {{ day.name}}
+                        </h4>
+
+                        <!-- Affichage en boucle for les plats du jour pour chaque jour de la semaine -->
+                        <ul class="contain-menu">
+                            <li *ngFor="let plat of day.plats" class="contain-plat-details">
+
+                                <div class="contain-img-plat" *ngIf="day.image64[0].idPlats == plat.id; else autreImage">
+                                    <img src={{day.image64[0].image64}} alt="">
+                                </div>
+
+                                <ng-template #autreImage>
+                                    <div class="contain-img-plat">
+                                        <img src={{day.image64[1].image64}} alt="">
+                                    </div>
+                                </ng-template>
+                                <div class="details-plat">
+                                    <h3>{{ plat.label}}</h3>
+                                    <p>{{plat.priceDF}} crédits</p>
+                                    <div *ngIf="day.date == today && ((todayHours == maxHours && todayMinutes < maxMinutes) || todayHours < maxHours); else elseDate">
+                                        <button class="btn add" (click)="onAddMenuToBucket(plat, day.date)">Ajouter</button>
+                                    </div>
+                                    <ng-template #elseDate>
+                                        <div>
+                                            <button class="btn disabled" disabled>
+                                                Ajouter
+                                                <span class="tooltiptext">
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    ATTENTION
+                                                    <i class="fas fa-exclamation-circle"></i> <br>
+                                                    Toute commande dois etre prise <br> avant 10h30
+                                                  </span>
+                                            </button>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </li>
+                        </ul>
+
+                    </article>
+                </div>
+            </div>
+
+            <!-- Affichage de la carte -->
+            <div class=" contain-carte">
+                <h3 class="title-carte">Carte</h3>
+                <section class="category-carte">
+                    <ul>
+                        <!-- Pour toutes les catégories de la carte on affiche les elements de la carte -->
+                        <li *ngFor="let category of categories">
+                            <div class="contain-cat">
+                                <h4 class="category-title">{{category[0].name}}</h4>
+                            </div>
+                            <ul class="list-of-meals">
+                                <!-- Pour la categorie en cours, boucle for d'affichage des elements de la categorie en cours d'affichage -->
+                                <li class="meal-item" *ngFor="let item of category[0]['items']">
+                                    <div class="contain-info-item">
+                                        <h5 class="meal-title">{{item.label}}</h5>
+                                        <p class="meal-price">{{ item.priceDF }} crédit(s)</p>
+                                    </div>
+                                    <!-- Bouton d'ajout au panier -->
+                                    <ng-container *ngIf="(todayHours == maxHours && todayMinutes < maxMinutes) || todayHours < maxHours; else elseHour">
+                                        <button (click)="addItemToBucket(category[0].name, item, item.id)" class="btn add tool"><i class="fas fa-shopping-cart"></i>
+                                          </button>
+                                        </ng-container>
+                                    <ng-template #elseHour>
+                                        <button (click)="addItemToBucket(category[0].name, item, item.id)" class="btn add tool disabled" disabled><i class="fas fa-shopping-cart"></i>
+                                            <span class="tooltiptext">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                ATTENTION
+                                                <i class="fas fa-exclamation-circle"></i> <br>
+                                                Toute commande dois etre prise <br> avant 10h30
+                                              </span>
+                                        </button>
+                                    </ng-template>
+                                </li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+    </section>
+    <div class="fixed-btn">
+        <!-- Bouton d'acces au panier -->
+        <button (click)="onGoToBucket()" class="btn bucket"> <i class="fas fa-shopping-cart"></i>
+          <span class="tooltiptext toolTip">Voir mon panier</span>
+        </button>
+    </div>
+</main>

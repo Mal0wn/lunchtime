@@ -1,0 +1,28 @@
+<main class="contain-order">
+    <section class="contain-inprogress">
+        <h2>Commandes en cours</h2>
+        <ul *ngIf="thereIsOrders">
+            <!-- Pour toutes les commandes en cours récupérées on affiche les infos -->
+            <li *ngFor="let order of orders">
+                <div class="contain-order-details">
+                    <p class="date"> {{order.creationDate}} à {{ order.creationTime }} </p>
+                    <p class="status">Statut : {{order.status}} </p>
+                    <p class="price"> {{ order.price }} Crédit(s)</p>
+                </div>
+                <!-- Redirection vers différentes actions -->
+                <a routerLink="/orderDetails/{{order.id}}/{{userId}}">Voir Détails</a>
+
+                <button *ngIf="order.status == 'En Attente  && order.creationDate > todayDate'" (click)="deleteOrder(order.id)">Annuler ma commande</button>
+                <button *ngIf="order.status == 'En Attente' && order.creationDate > todayDate" (click)="modifyOrder(order.id)">Modifier ma commande</button>
+
+            </li>
+        </ul>
+        
+        <!-- Message d'erreur au cas ou il n'y a pas de commandes en cours -->
+        <div *ngIf="!thereIsOrders">
+            <p>Vous n'avez pas de commandes en cours ! N'hésitez pas la carte offre de très bon choix aujourd'hui ^^</p>
+        </div>
+
+        <button (click)="onReturnMenu()">Retour vers Menu</button>
+    </section>
+</main>

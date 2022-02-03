@@ -1,0 +1,60 @@
+<div>
+  
+    <h1>Ajouter un article dans la carte</h1>
+    <h2>Catégorie : {{ categoryName }}</h2>
+
+  <!--Formulaire de Connexion-->
+  <form (ngSubmit)="onAddItem()" [formGroup]="AddMealForm">
+
+    <div id="inputs">
+        <!--Input du formulaire & Bouton Valider-->
+        <div class="input">
+            Nom de l'article : <input type="text" [formControl]="mealName" />    
+        </div>
+        <p *ngIf="mealName.dirty && (mealName.hasError('required')) ">
+          Nom Invalide</p>
+
+        <div class="input">
+          Prix : <input type="number" [formControl]="mealPrice" /> 
+        </div>
+        <p *ngIf="mealPrice.dirty && mealPrice.hasError('required')">
+          Prix Invalide</p>
+
+          <!-- Image de l'element a jouter -->
+          <input
+          type="file"
+          id="photoUser"
+          name="photoUser"
+          accept="image/png, image/jpeg" 
+          [formControl]="mealImage"
+          (change)="onModifyAvatar($event.target.files[0])"
+          />
+        <br />
+        <img src={{avatar}}/>
+
+        <!-- Liste des semaines disponibles -->
+        <ul >
+          <li *ngFor="let week of weeks">
+            <label for={{week}}>Semaine {{week}}</label>
+            <input type="checkbox"  name={{week}} value={{week}}  (click)="onChangeCheckbox($event)" >
+          </li>
+        </ul>
+
+     </div>
+    
+     <!-- Bouton d'ajout à la carte -->
+    <button
+      [disabled]="
+      mealName.hasError('required') ||
+      mealPrice.hasError('required')
+      ">
+      Ajouter à la carte</button>
+    <p>{{ msgError }}</p>
+  </form>
+
+  </div>
+
+  <!-- Bouton de Retour à la carte -->
+  <div>
+    <button (click)="onReturn()">Retour à la carte</button>
+  </div>

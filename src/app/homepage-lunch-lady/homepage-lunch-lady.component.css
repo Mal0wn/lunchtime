@@ -1,0 +1,217 @@
+.sect-homepage {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sect-homepage h2 {
+    text-align: center;
+    margin: 1.9em;
+    color: #175242;
+    font-size: 2em;
+}
+
+.contain-plats {
+    margin: auto;
+    padding-bottom: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain-plats p span {
+    color: #F18F18;
+    font-weight: bold;
+}
+
+.contain-day {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contain-day li {
+    background-color: #86CB92;
+    border-radius: 6px;
+    padding: 1em;
+    margin: 0.6em;
+}
+
+.day-name {
+    color: #175242;
+    font-size: 1.2em;
+}
+
+.is-invalid {
+    color: #a8264d;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    min-width: 200px;
+}
+
+
+/*-----------------La carte ---------------------*/
+
+.contain-carte {
+    margin: auto;
+    width: 80%;
+    padding-bottom: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-carte {
+    color: #175242;
+    font-size: 1.6em;
+    font-weight: 500;
+}
+
+.category-carte ul {
+    width: 80%;
+    margin: auto;
+}
+
+.category-carte {
+    width: 100%;
+    margin: 0;
+}
+
+.category-carte ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.category-carte ul li {
+    width: 100%;
+}
+
+li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    align-items: baseline;
+}
+
+.meal-item {
+    flex-direction: row;
+}
+
+.category-carte ul li .add {
+    width: 30%;
+}
+
+.meal-title {
+    font-size: 0.9em;
+    min-width: 150px;
+}
+
+.contain-cat {
+    margin-bottom: 2em;
+    margin-top: 1em;
+    width: 100%;
+    background-color: #175242;
+    border-radius: 6px;
+    font-size: 1.5em;
+    color: #F18F01;
+    font-weight: 600;
+    padding: 1em;
+}
+
+.contain-btn-meal {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+}
+
+
+/*----------Button----------*/
+
+.contain-btn {
+    width: 40%;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.4em;
+}
+
+.add {
+    background-color: #175242;
+    color: #fff;
+    width: 100%;
+}
+
+.delete {
+    background-color: rgb(255, 0, 85);
+    color: #fff;
+}
+
+.contain-btn .delete {
+    margin-top: 1em;
+    width: 100%;
+}
+
+.modify {
+    background-color: #F18F18;
+    color: #175242;
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 990px) {
+    .sect-homepage {
+        width: 100%;
+    }
+    .contain-carte {
+        width: 90%;
+    }
+    .category-carte {
+        width: 100%;
+    }
+    .contain-day {
+        padding-left: 0;
+    }
+    .category-carte ul {
+        width: 95%;
+    }
+    .category-title {
+        font-size: 1.2em;
+        width: 100%;
+    }
+    .meal-item {
+        flex-wrap: wrap;
+    }
+    .contain-cat {
+        flex-wrap: wrap;
+        padding: 10px 5px 10px 5px;
+    }
+    .contain-btn-cat button {
+        margin-left: 0.3em;
+    }
+    .meal-title {
+        font-size: 1em;
+    }
+    .meal-price {
+        font-size: 1em;
+    }
+    .contain-btn-meal {
+        width: 100%;
+    }
+}

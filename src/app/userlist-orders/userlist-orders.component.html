@@ -1,0 +1,30 @@
+<section class="container">
+    <h2>Liste des Commandes</h2>
+    <div class="filters">
+        <div>
+            <app-week-picker (dateEvent)="onDateChange($event)"></app-week-picker>
+        </div>
+        <div>
+            <label for="filter"></label>
+            <select name="filter" id="filterStatus" [(ngModel)]="statusSelected" (change)="onTMPStatusSelect()">
+                <option *ngFor="let status of statusList" [value]="status.status">{{ status.name }}</option>
+            </select>
+        </div>
+        <app-order-user-search (search)="onSearch($event)"></app-order-user-search>
+    </div>
+    <hr>
+    <div class="main">
+        <div class="week-container">
+            <div class="day" *ngFor="let day of weekDays;let i = index" (click)="selectDay(i)">
+                {{day.day}}
+            </div>
+        </div>
+        <div class="users">
+            <ng-container *ngFor="let order of (orders$ | async)! | OrderUserfilter: search;  trackBy : trackByOrderId">
+                <ng-container *ngIf="order.creationDate === weekDays[i_day].date">
+                    <app-order-item [orderInput]="order" (orderDelete)="deleteOrder($event)" (orderDeliver)="deliverAndPayOrder($event)"></app-order-item>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</section>
